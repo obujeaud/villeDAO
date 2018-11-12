@@ -38,6 +38,7 @@ public class TestVilleDAO extends TU_Pere {
 		// Object with id > list size
 		v.setId(150);
 		assertNull(vdao.updateById(v));
+		assertNull(null);
 
 		// Id not present in database
 		v.setId(0);
