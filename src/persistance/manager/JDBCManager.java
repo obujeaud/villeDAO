@@ -1,4 +1,4 @@
-package persistence.manager;
+package persistance.manager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

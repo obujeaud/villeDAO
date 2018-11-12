@@ -1,4 +1,4 @@
-package persistence.dao;
+package persistance.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import persistence.manager.JDBCManager;
+import persistance.manager.JDBCManager;
 
 public class VilleDAO {
 
