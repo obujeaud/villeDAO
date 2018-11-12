@@ -1,8 +1,5 @@
 package persistance.manager;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -24,7 +21,7 @@ public class JDBCManager {
     	return INSTANCE;
     }	    
     
-    public Connection openConection() throws ClassNotFoundException, SQLException, IOException {
+    public Connection openConection() throws Exception {
     	
     	CfgManager cfgManager = CfgManager.getInstance();
     	

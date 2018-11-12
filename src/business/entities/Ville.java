@@ -1,7 +1,7 @@
 package business.entities;
 
 public class Ville {
-	private int id;
+	private long id;
 	private String nomVille;
 	private String pays;
 	private int nbHab;
@@ -42,12 +42,12 @@ public class Ville {
 		this.nbHab = nbHab;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long id2) {
+		this.id = id2;
 	}
 
 }

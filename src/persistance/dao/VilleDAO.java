@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.entities.Ville;
 import persistance.manager.JDBCManager;
 
 public class VilleDAO {
@@ -18,13 +19,12 @@ public class VilleDAO {
 
 
 
-	@Override
 	public Ville create(Ville pT) throws Exception {
 		Connection cnx = JDBCManager.getInstance().openConection();
 		PreparedStatement preparedStatement = cnx.prepareStatement(sqlInsertVille ,PreparedStatement.RETURN_GENERATED_KEYS);
-		preparedStatement.setString(1, pT.getMarque());
-		preparedStatement.setString(2, pT.getModele());
-		preparedStatement.setInt(3, pT.getCylindree());
+		preparedStatement.setString(1, pT.getNomVille());
+		preparedStatement.setString(2, pT.getPays());
+		preparedStatement.setInt(3, pT.getNbHab());
 		preparedStatement.execute();
 
 		ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -38,7 +38,6 @@ public class VilleDAO {
 		return pT;
 	}
 
-	@Override
 	public Ville findById(long pId) throws Exception {
 		Connection cnx = JDBCManager.getInstance().openConection();
 		PreparedStatement preparedStatement = cnx.prepareStatement(sqlSelectOneVille);
@@ -47,18 +46,16 @@ public class VilleDAO {
 
 		Ville ville = null;
 		while(st.next()) {
-			Long id = st.getLong("id");
 			String nomVille = st.getString("nom_ville");
 			String pays = st.getString("pays");
 			Integer nbHabitant = st.getInt("nbHabitant");
 			/* ... */
-			ville = new Ville(id, nomVille, pays, nbHabitant);
+			ville = new Ville(nomVille, pays, nbHabitant);
 		}
 		JDBCManager.getInstance().closeConnection();
 		return ville;
 	}
 
-	@Override
 	public List<Ville> findList() throws Exception {
 		List<Ville> list = new ArrayList<>();
 		Connection cnx = JDBCManager.getInstance().openConection();
@@ -67,19 +64,17 @@ public class VilleDAO {
 
 		Ville ville = null;
 		while(st.next()) {
-			Long id = st.getLong("id");
 			String nomVille = st.getString("nom_ville");
 			String pays = st.getString("pays");
 			Integer nbHabitant = st.getInt("nbHabitant");
 			/* ... */
-			ville = new Ville(id, nomVille, pays, nbHabitant);
+			ville = new Ville(nomVille, pays, nbHabitant);
 			list.add(ville);
 		}
 		JDBCManager.getInstance().closeConnection();
 		return list;
 	}
 
-	@Override
 	public void updateById(Ville pT) throws Exception {
 		Connection cnx = JDBCManager.getInstance().openConection();
 		PreparedStatement preparedStatement = cnx.prepareStatement(sqlUpdateVille,PreparedStatement.RETURN_GENERATED_KEYS);
@@ -93,7 +88,6 @@ public class VilleDAO {
 
 	}
 
-	@Override
 	public void deleteById(long pId) throws Exception {
 		if(pId >= 0) {
 			Connection cnx = JDBCManager.getInstance().openConection();	
