@@ -8,7 +8,7 @@ import java.util.List;
 
 import persistence.manager.JDBCManager;
 
-public class VeloDAO {
+public class VilleDAO {
 
 	public static final String sqlSelectAllVille = "SELECT * FROM Ville";
 	public static final String sqlInsertVille = "INSERT INTO Ville (nom_ville, pays, nbHabitant) values (?,?,?)";
