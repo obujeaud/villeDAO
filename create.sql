@@ -19,8 +19,8 @@ USE `git`;
 -- Export de la structure de la table git. ville
 CREATE TABLE IF NOT EXISTS `ville` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_ville` int(11) DEFAULT NULL,
-  `pays` int(11) DEFAULT NULL,
+  `nom_ville` varchar(50) DEFAULT NULL,
+  `pays` varchar(50) DEFAULT NULL,
   `nbHabitant` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
