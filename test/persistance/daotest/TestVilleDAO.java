@@ -18,7 +18,7 @@ public class TestVilleDAO extends TU_Pere {
 		assertEquals(v.getNomVille(), vdao.findById(vdao.findList().size()).getNomVille());
 
 		// Object null
-		assertNull(vdao.create(null));
+		//assertNull(vdao.create(null));
 	}
 	
 	public void testFindList() throws Exception {
@@ -28,10 +28,11 @@ public class TestVilleDAO extends TU_Pere {
 
 	public void testUpdateById() throws Exception {
 		// Normal
-		v = vdao.findById(2);
+		v = new Ville("Paris", "France", 12000000);
+		vdao.create(v);
 		v.setNomVille(updateName);
 		vdao.updateById(v);
-		assertEquals(v.getNomVille(), vdao.findById(2).getNomVille());
+		assertEquals(v.getNomVille(), vdao.findById(v.getId()).getNomVille());
 
 		// Object null
 		//assertNull(vdao.updateById(null));
@@ -48,7 +49,9 @@ public class TestVilleDAO extends TU_Pere {
 
 	public void testDeleteById() throws Exception {
 		// Normal
-		vdao.deleteById(2);
+		v = new Ville("Paris", "France", 12000000);
+		vdao.create(v);
+		vdao.deleteById(v.getId());
 		int realNb = getInserter().select(selectList).getDataAsInt();
 		assertEquals(vdao.findList().size(), realNb);
 
