@@ -13,6 +13,7 @@
 
 
 -- Export de la structure de la base pour git
+DROP DATABASE IF EXISTS `git`;
 CREATE DATABASE IF NOT EXISTS `git` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `git`;
 
